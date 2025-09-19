@@ -1,0 +1,33 @@
+%dev:
+   kafka:
+     bootstrap:
+       servers: localhost:9092
+kafka:
+  group:
+    id: test
+
+quarkus:
+  redis:
+    my-redis:
+      hosts: redis://localhost:7000
+mp:
+  messaging:
+    outgoing:
+      products:
+        connector: smallrye-kafka
+        topic: products
+      prices:
+        connector: smallrye-kafka
+        topic: prices
+    incoming:
+      prices:
+        commit-strategy: checkpoint
+        checkpoint:
+          state-store: quarkus-redis
+          state-type: com.github.fabriciolfj.model.AveragePrice
+          quarkus-redis:
+            client-name: my-redis
+        concurrency: 3
+        connector: smallrye-kafka
+      products:
+        connector: smallrye-kafka
