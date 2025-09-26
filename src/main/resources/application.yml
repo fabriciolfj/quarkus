@@ -13,14 +13,50 @@ quarkus:
 mp:
   messaging:
     outgoing:
+      movies:
+        apicurio:
+          registry:
+            auto-register: true
+            artifact:
+              schema:
+                location: json-schema.json
+        connector: smallrye-kafka
+        topic: movies
+        value:
+          serializer: io.apicurio.registry.serde.jsonschema.JsonSchemaKafkaSerializer
       products:
         connector: smallrye-kafka
         topic: products
       prices:
         connector: smallrye-kafka
         topic: prices
+      fruit:
+        connector: smallrye-kafka
+        topic: fruit
+        value:
+          serializer: io.quarkus.kafka.client.serialization.ObjectMapperSerializer
     incoming:
+      movies:
+        connector: smallrye-kafka
+        topic: movies
+        value:
+          deserializer: io.apicurio.registry.serde.jsonschema.JsonSchemaKafkaDeserializer
+        enable:
+          auto:
+            commit: false
+            offset:
+              reset: earliest
+      fruit:
+        value:
+          deserializer: com.github.fabriciolfj.deserializer.FruitDeserializer
+        isolation:
+          level: read_committed
+        commit-strategy: checkpoint
+        concurrency: 3
+        connector: smallrye-kafka
       prices:
+        isolation:
+          level: read_committed
         commit-strategy: checkpoint
         checkpoint:
           state-store: quarkus-redis
