@@ -12,7 +12,7 @@ public class FruitConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(FruitConsumer.class);
 
-    @Incoming("fruit")
+    @Incoming("fruit-in")
     public void receive(final Fruit fruit) {
         log.info("receive fruit {}", fruit);
     }

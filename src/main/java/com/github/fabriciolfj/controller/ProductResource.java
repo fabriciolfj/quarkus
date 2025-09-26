@@ -14,11 +14,11 @@ import org.jboss.resteasy.reactive.RestStreamElementType;
 public class ProductResource {
 
     @Inject
-    @Channel("products")
+    @Channel("products-in")
     Multi<String> products;
 
     @Inject
-    @Channel("products")
+    @Channel("products-out")
     Emitter<String> productsSend;
 
     @POST

@@ -16,7 +16,7 @@ public class PriceResource {
     private final Logger log = LoggerFactory.getLogger(PriceConsumer.class);
 
     @Inject
-    @Channel("prices")
+    @Channel("prices-out")
     private Emitter<Double> priceProducer;
 
     @POST

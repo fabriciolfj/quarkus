@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package greeting;
+
+option java_multiple_files = true;
+option java_package = "io.quarkus.example";
+option java_outer_classname = "HelloWorldProto";
+
+// Definição do serviço
+service Greeter {
+  // Método simples de saudação
+  rpc SayHello(HelloRequest) returns (HelloReply) {}
+
+  // Método com streaming do servidor
+  rpc SayHelloStreaming(HelloRequest) returns (stream HelloReply) {}
+}
+
+// Mensagem de requisição
+message HelloRequest {
+  string name = 1;
+}
+
+// Mensagem de resposta
+message HelloReply {
+  string message = 1;
+  int64 timestamp = 2;
+}

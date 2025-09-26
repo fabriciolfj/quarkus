@@ -13,7 +13,7 @@ import jakarta.ws.rs.core.Response;
 public class MovieResource {
     private static final Logger LOGGER = Logger.getLogger(MovieResource.class);
 
-    @Channel("movies")
+    @Channel("movies-out")
     Emitter<Movie> emitter;
 
     @POST

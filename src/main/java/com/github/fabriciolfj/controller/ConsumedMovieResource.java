@@ -15,7 +15,7 @@ import io.smallrye.mutiny.Multi;
 @Path("/consumed-movies")
 public class ConsumedMovieResource {
 
-    @Channel("movies")
+    @Channel("movies-in")
     Multi<Movie> movies;
 
     @GET

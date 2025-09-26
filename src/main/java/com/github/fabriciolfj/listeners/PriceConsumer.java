@@ -22,7 +22,7 @@ public class PriceConsumer {
         return Uni.createFrom().voidItem();
     }*/
 
-    @Incoming("prices")
+    @Incoming("prices-in")
     @Retry(maxRetries = 3, delay = 10)
     public void consome(final double value) {
         log.info("price receive {}", value);
