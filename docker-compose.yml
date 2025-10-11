@@ -167,6 +167,7 @@ services:
       KAFKA_HOST: kafka
       REDIS_HOST: redis
       QUARKUS_APP: quarkus-app
+      HOST_SERVER: app
       JAEGER_HOST: jaeger
       MP_MESSAGING_CONNECTOR_SMALLRYE-KAFKA_APICURIO_REGISTRY_URL: http://apicurio-registry:8080/apis/registry/v2
       MP_MESSAGING_INCOMING_MOVIES-IN_APICURIO_REGISTRY_URL: http://apicurio-registry:8080/apis/registry/v2
